@@ -1,0 +1,17 @@
+# Rust
+target/
+
+# Editor
+*.swp
+*.swo
+*~
+.DS_Store
+.vscode/
+.idea/
+
+# Temp
+/tmp/
+*.log
+
+# Docker
+.env

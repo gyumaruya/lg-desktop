@@ -1,0 +1,16 @@
+services:
+  desktop:
+    platform: linux/amd64
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    container_name: lg-desktop
+    environment:
+      - TZ=UTC
+      - RESOLUTION=1280x1024x24
+    volumes:
+      - /tmp/lg-desktop-share:/shared
+    ports:
+      - "127.0.0.1:3000:3000"
+    shm_size: "1gb"
+    restart: unless-stopped

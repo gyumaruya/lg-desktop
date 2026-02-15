@@ -1,0 +1,64 @@
+# lg-desktop i3 config - OCR optimized
+# No title bars, minimal border
+default_border pixel 1
+default_floating_border pixel 1
+
+# High contrast colors (white on black for OCR)
+# class                 border  bg      text    indicator child_border
+client.focused          #ffffff #000000 #ffffff #ffffff   #ffffff
+client.focused_inactive #888888 #000000 #888888 #888888   #888888
+client.unfocused        #333333 #000000 #888888 #333333   #333333
+client.urgent           #ff0000 #000000 #ffffff #ff0000   #ff0000
+
+# OCR-friendly font
+font pango:DejaVu Sans Mono 11
+
+# No gaps
+gaps inner 0
+gaps outer 0
+
+# Hide status bar (saves OCR noise)
+bar {
+    mode hide
+    hidden_state hide
+    modifier none
+}
+
+# Java SWT apps (RASC, Eclipse) need floating
+for_window [class="java"] floating enable
+for_window [class="Java"] floating enable
+for_window [class="sun-awt-X11.*"] floating enable
+
+# Dialog windows should float
+for_window [window_role="dialog"] floating enable
+for_window [window_role="pop-up"] floating enable
+for_window [window_type="dialog"] floating enable
+
+# Use Alt as modifier (doesn't conflict with most apps)
+set $mod Mod1
+
+# Basic keybindings for manual use
+bindsym $mod+Return exec xterm
+bindsym $mod+d exec dmenu_run
+bindsym $mod+Shift+q kill
+bindsym $mod+f fullscreen toggle
+
+# Tiling controls
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+bindsym $mod+v split v
+bindsym $mod+b split h
+
+# Workspace controls
+bindsym $mod+1 workspace 1
+bindsym $mod+2 workspace 2
+bindsym $mod+3 workspace 3
+bindsym $mod+Shift+1 move container to workspace 1
+bindsym $mod+Shift+2 move container to workspace 2
+bindsym $mod+Shift+3 move container to workspace 3
